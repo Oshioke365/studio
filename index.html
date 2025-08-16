@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studio</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* custom scroll bar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+      ::selection {
+        background: rgb(0, 123, 255, 0.3);
+      }
+
+      .content {
+        max-width: 1250px;
+        margin: auto;
+        padding: 0 30px;
+      }
+
+      .navbar {
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+        padding: 25px 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.sticky {
+        background: #1b1b1b;
+        padding: 10px 0;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .navbar .logo a {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .navbar .menu-list {
+        display: inline-flex;
+      }
+
+      .menu-list li {
+        list-style: none;
+      }
+
+      .menu-list li a {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        margin-left: 25px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 30px;
+      }
+
+      .menu-list li a:hover {
+        background-color: #1b1b1b;
+      }
+
+      /*Home page*/
+      .home-page {
+        background-image: url("images/new\ bg2.gif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      #typewriter {
+        border-right: 2px solid white;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 2s steps(15) forwards,
+          blink 0.5s step-end infinite alternate;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .check-link {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        color: yellow;
+        background: #000;
+        font-weight: bold;
+        transition: color 0.3s;
+        font-size: 10px;
+      }
+
+      .check-link:hover {
+        color: #fff;
+      }
+
+      .icon {
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+      }
+
+      .menu-list .cancel-btn {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 50px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-family: 'Playwrite GB S', cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      /*about*/
+      .about-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px;
+      }
+
+      .about-image {
+        margin-right: 20px;
+      }
+
+      .about-image img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .about-writeup {
+        flex: 1;
+        font-size: 26px;
+        color: #1c1b1b;
+      }
+
+      /*services*/
+      .services {
+        padding: 4rem 2rem;
+        background-color: #111;
+        color: #fff;
+      }
+
+      .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background-color: #1c1c1c;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        background-color: #222;
+      }
+
+      .service-card i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #f39c12;
+      }
+
+      .service-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .service-card p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        color: #ccc;
+      }
+
+      .book-now {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #f39c12;
+        color: #f39c12;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .book-now:hover {
+        background-color: #f39c12;
+        color: #111;
+      }
+
+      /*live events */
+      .live-events {
+        padding: 4rem 2rem;
+        background-color: #fff;
+        color: #111;
+      }
+
+      .live-events-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+      }
+
+      .live-events-banner img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      .live-events-content {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .live-events-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .live-events-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .live-events-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #111;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .sign-up {
+        background-color: #111;
+        color: #fff;
+      }
+
+      .get-tickets {
+        color: #111;
+      }
+
+      .sign-up:hover {
+        background-color: transparent;
+        color: #111;
+      }
+
+      .get-tickets:hover {
+        background-color: #111;
+        color: #fff;
+      }
+
+      /* Contact Section Styles */
+      #contact {
+        padding: 50px 20px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+
+      #contact h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #f39c12;
+      }
+
+      .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .contact-form {
+        width: 100%;
+        max-width: 450px;
+        margin-bottom: 40px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .contact-form input {
+        background-color: #fff;
+        color: #000;
+      }
+
+      .contact-form textarea {
+        background-color: #fff;
+        color: #000;
+        height: 150px;
+      }
+
+      .contact-form button {
+        margin-top: 20px;
+        background-color: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icon {
+        background-color: #fff;
+        color: #000;
+        border-radius: 50%;
+        padding: 15px;
+      }
+
+      .social-icon:hover {
+        background-color: #f39c12;
+        color: #fff;
+      }
+
+      .social-icon i {
+        font-size: 1.5rem;
+      }
+
+      /* SCROLL ANIMATION STYLES */
+      .scroll-animate {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+
+      /* Staggered animation for service cards */
+      .service-card.scroll-animate {
+        transition-delay: var(--delay, 0s);
+      }
+
+      /* Enhanced pop effect for images */
+      .about-image.scroll-animate {
+        transform: scale(0.7) translateY(80px) rotateY(-15deg);
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .about-image.scroll-animate.visible {
+        transform: scale(1) translateY(0) rotateY(0deg);
+        opacity: 1;
+      }
+
+      .live-events-banner.scroll-animate {
+        transform: scale(0.6) translateX(-100px);
+        opacity: 0;
+        transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .live-events-banner.scroll-animate.visible {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 1230px) {
+        .content {
+          padding: 0 60px;
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .content {
+          padding: 0 40px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .content {
+          padding: 0 30px;
+        }
+      }
+
+      @media (max-width: 868px) {
+        body.disabled {
+          overflow: hidden;
+        }
+        .icon {
+          display: block;
+        }
+        .icon.hide {
+          display: none;
+        }
+        .navbar .menu-list {
+          position: fixed;
+          height: 100vh;
+          width: 100%;
+          max-width: 400px;
+          left: -100%;
+          top: 0px;
+          display: block;
+          padding: 40px 0;
+          text-align: center;
+          background: #222;
+          transition: all 0.3s ease;
+        }
+        .navbar.show .menu-list {
+          left: 0%;
+        }
+        .navbar .menu-list li {
+          margin-top: 45px;
+        }
+        .navbar .menu-list li a {
+          font-size: 23px;
+          margin-left: -100%;
+          transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .navbar.show .menu-list li a {
+          margin-left: 0px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .navbar .logo a {
+          font-size: 27px;
+        }
+      }
+
+      /* Mobile view improvements */
+      @media (max-width: 768px) {
+        .navbar .menu-list {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+          z-index: 999;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transform: translateX(-100%);
+          display: block;
+          transition: transform 0.3s ease;
+        }
+
+        .navbar.show .menu-list {
+          transform: translateX(0);
+        }
+
+        .menu-list li {
+          margin: 20px 0;
+        }
+
+        .menu-list li a {
+          font-size: 24px;
+        }
+
+        .about-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .about-image {
+          margin: 0 0 20px 0;
+        }
+
+        .contact-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .contact-form {
+          width: 100%;
+        }
+
+        #typewriter {
+          font-size: 27px;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        p, h3 {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar .logo a {
+          font-size: 24px;
+        }
+
+        .star-container h4 {
+          font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+          padding: 10px;
+        }
+
+        .contact-form button {
+          padding: 10px 15px;
+        }
+
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        p, h3 {
+          font-size: 0.875rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="content">
+        <div class="logo">
+          <a href="#">studio</a>
+        </div>
+        <ul class="menu-list">
+          <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="icon menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- home Section -->
+    <section id="home">
+      <div class="home-page">
+        <div id="typewriter"></div>
+        <a href="#about" class="check-link">Check us out</a>
+      </div>
+    </section>
+     
+    <!-- about Section -->
+    <section id="about">
+      <div class="about-page">
+        <div class="title">
+          <h3>What we do</h3>
+        </div>
+        <div class="about-content">
+          <div class="about-image scroll-animate">
+            <img src="images/new bg.gif" alt="Studio Animation">
+          </div>
+          <div class="about-writeup scroll-animate">
+            <p>
+              At Studio, we believe music is more than sound — it's a story, a feeling, an experience. Our studio was built to be a creative haven for artists of all genres, offering top-notch recording equipment, a comfortable atmosphere, and a passionate team dedicated to bringing your vision to life. Whether you're laying down your first track or mastering a full album, we're here to support every step of your journey. Come create with us and let's make something unforgettable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- services Section -->
+    <section class="services">
+      <div class="title" style="color: #f39c12;">
+        <h3>SERVICES</h3>
+      </div>
+      <div class="services-container">
+        <div class="service-card scroll-animate" style="--delay: 0.1s">
+          <i class="fas fa-microphone"></i>
+          <h3>Recording</h3>
+          <p>Capture your sound with crystal-clear quality in our state-of-the-art studio.</p>
+          <a href="#contact" class="book-now">Book Now</a>
+        </div>
+        <div class="service-card scroll-animate" style="--delay: 0.2s">
+          <i class="fas fa-music"></i>
+          <h3>Mixing</h3>
+          <p>Blend and balance your tracks perfectly with our expert mixing engineers.</p>
+          <a href="#" class="book-now">Book Now</a>
+        </div>
+        <div class="service-card scroll-animate" style="--delay: 0.3s">
+          <i class="fas fa-compact-disc"></i>
+          <h3>Mastering</h3>
+          <p>Get your music ready for all platforms with industry-standard mastering.</p>
+          <a href="#" class="book-now">Book Now</a>
+        </div>
+        <div class="service-card scroll-animate" style="--delay: 0.4s">
+          <i class="fas fa-headphones-alt"></i>
+          <h3>Podcast Production</h3>
+          <p>Create professional-quality podcasts with our production support and tools.</p>
+          <a href="#" class="book-now">Book Now</a>
+        </div>
+        <div class="service-card scroll-animate" style="--delay: 0.5s">
+          <i class="fas fa-guitar"></i>
+          <h3>Instrumentals</h3>
+          <p>Access a wide library of beats or collaborate to create custom instrumentals.</p>
+          <a href="#" class="book-now">Book Now</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- live events Section -->
+    <section class="live-events">
+      <div class="title" style="color: #f39c12;">
+        <h3>SO YOU THINK YOU CAN RAP HUH??</h3>
+      </div>
+      <div class="live-events-container">
+        <div class="live-events-banner scroll-animate">
+          <img src="images/rap.jpg" alt="Rap Battle Event Banner">
+        </div>
+        <div class="live-events-content scroll-animate">
+          <h2>Ultimate Rap Battle Night</h2>
+          <p>Get ready to spit fire! Join the biggest rap battle showdown of the year, where lyrical legends and rising stars face off in an electrifying atmosphere. Whether you're stepping into the ring or cheering from the crowd, it's a night you won't forget. Don't miss your shot to own the stage!</p>
+          <div class="live-events-buttons">
+            <a href="#" class="btn sign-up">Sign Up</a>
+            <a href="#" class="btn get-tickets">Get Tickets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-container">
+        <form class="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-x"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Mobile menu functionality
+      const body = document.querySelector("body");
+      const navbar = document.querySelector(".navbar");
+      const menuBtn = document.querySelector(".menu-btn");
+      const cancelBtn = document.querySelector(".cancel-btn");
+      
+      menuBtn.onclick = () => {
+        navbar.classList.add("show");
+        menuBtn.classList.add("hide");
+        body.classList.add("disabled");
+      };
+      
+      cancelBtn.onclick = () => {
+        body.classList.remove("disabled");
+        navbar.classList.remove("show");
+        menuBtn.classList.remove("hide");
+      };
+      
+      window.onscroll = () => {
+        this.scrollY > 20
+          ? navbar.classList.add("sticky")
+          : navbar.classList.remove("sticky");
+      };
+
+      // Typewriter effect
+      const textArray = [
+        "Welcome to Studio",
+        "Where your music speaks "
+      ];
+      const typingSpeed = 90;
+      const delayBetweenTexts = 1000;
+      let textIndex = 0;
+      let charIndex = 0;
+
+      const typewriterElement = document.getElementById("typewriter");
+
+      function typeText() {
+        if (charIndex < textArray[textIndex].length) {
+          typewriterElement.textContent += textArray[textIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeText, typingSpeed);
+        } else {
+          setTimeout(deleteText, delayBetweenTexts);
+        }
+      }
+
+      function deleteText() {
+        if (charIndex > 0) {
+          typewriterElement.textContent = textArray[textIndex].substring(
+            0,
+            charIndex - 1
+          );
+          charIndex--;
+          setTimeout(deleteText, typingSpeed / 2);
+        } else {
+          textIndex = (textIndex + 1) % textArray.length;
+          setTimeout(typeText, typingSpeed);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", typeText);
+
+      // SCROLL ANIMATION FUNCTIONALITY
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with scroll-animate class
+      document.addEventListener('DOMContentLoaded', () => {
+        const animateElements = document.querySelectorAll('.scroll-animate');
+        animateElements.forEach(el => {
+          observer.observe(el);
+        });
+      });
+
+      // Enhanced scroll trigger for better performance
+      let ticking = false;
+
+      function updateScrollAnimations() {
+        const elements = document.querySelectorAll('.scroll-animate:not(.visible)');
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset;
+
+        elements.forEach(element => {
+          const elementTop = element.offsetTop;
+          const elementHeight = element.offsetHeight;
+          const elementBottom = elementTop + elementHeight;
+
+          // Trigger animation when element is 20% visible
+          if (elementBottom > scrollTop && elementTop < scrollTop + windowHeight * 0.8) {
+            element.classList.add('visible');
+          }
+        });
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(updateScrollAnimations);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll);
+    </script>
+  </body>
+</html>
